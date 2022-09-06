@@ -1,0 +1,14 @@
+int n
+n = scan()
+int i
+int res
+int read
+res = scan()
+n = n - 1
+for(i = 0 ; i < n){
+    read = scan()
+    res = read * res
+    i = i + 1
+}
+print("O produto dos numeros inseridos e: ")
+print(res)

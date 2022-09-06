@@ -1,0 +1,19 @@
+int i
+int count
+count = 0
+int res 
+print("Insira numeros (termina com -1)\n")
+for(i = 0 ; i != -1){
+    i = scan()
+    if ( i != -1){
+        res = i % 2
+        if( res != 0 ){
+            print("\nNumero impar encontrado: ")
+            print(i)
+            print("\n")
+            count = count + 1
+        }
+    }
+}
+print("Numeros impares inseridos: ")
+print(count)

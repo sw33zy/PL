@@ -1,0 +1,2081 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ID
+
+Grammar
+
+Rule 0     S' -> Prog
+Rule 1     Prog -> InitBlock
+Rule 2     Prog -> InstrBlock
+Rule 3     InitBlock -> Init
+Rule 4     InitBlock -> InitBlock Init
+Rule 5     Init -> INTID VAR
+Rule 6     Init -> INTID [ INT ] VAR
+Rule 7     Init -> INTID [ INT ] [ INT ] VAR
+Rule 8     InstrBlock -> Command
+Rule 9     InstrBlock -> InstrBlock Command
+Rule 10    Command -> Atrib
+Rule 11    Command -> Read
+Rule 12    Command -> Write
+Rule 13    Command -> IfStatement
+Rule 14    Command -> ForStatement
+Rule 15    Atrib -> VAR = Expr
+Rule 16    Atrib -> VAR = Read
+Rule 17    Atrib -> VAR [ INT ] = Expr
+Rule 18    Atrib -> AtribArray = Expr
+Rule 19    AtribArray -> VAR [ VAR ]
+Rule 20    Atrib -> VAR [ INT ] = Read
+Rule 21    Atrib -> AtribArray = Read
+Rule 22    Atrib -> VAR [ INT ] [ INT ] = Expr
+Rule 23    Atrib -> VAR [ INT ] [ INT ] = Read
+Rule 24    AtribMatrix -> VAR [ VAR ] [ VAR ]
+Rule 25    Atrib -> AtribMatrix = Expr
+Rule 26    Atrib -> AtribMatrix = Read
+Rule 27    Read -> READ ( )
+Rule 28    Write -> WRITE ( STRING )
+Rule 29    Write -> WRITE ( VAR )
+Rule 30    Write -> WRITE ( VAR [ INT ] )
+Rule 31    Write -> WRITE ( AtribArray )
+Rule 32    Write -> WRITE ( VAR [ INT ] [ INT ] )
+Rule 33    Write -> WRITE ( AtribMatrix )
+Rule 34    IfStatement -> If { Body }
+Rule 35    If -> IFID ( Cond )
+Rule 36    Body -> Command
+Rule 37    Body -> Body Command
+Rule 38    ForStatement -> For { Body }
+Rule 39    For -> FORID ( Atrib InitLabel ForCond )
+Rule 40    InitLabel -> ;
+Rule 41    ForCond -> Cond
+Rule 42    Cond -> Factor = = Factor
+Rule 43    Cond -> Factor ! = Factor
+Rule 44    Cond -> Factor > Factor
+Rule 45    Cond -> Factor > = Factor
+Rule 46    Cond -> Factor < = Factor
+Rule 47    Cond -> Factor < Factor
+Rule 48    Expr -> Expr + Term
+Rule 49    Expr -> Expr - Term
+Rule 50    Expr -> Term
+Rule 51    Term -> Term * Factor
+Rule 52    Term -> Term / Factor
+Rule 53    Term -> Term % Factor
+Rule 54    Term -> Factor
+Rule 55    Factor -> INT
+Rule 56    Factor -> VAR
+Rule 57    Factor -> VAR [ INT ]
+Rule 58    Factor -> VAR [ INT ] [ INT ]
+Rule 59    Factor -> ( Expr )
+
+Terminals, with rules where they appear
+
+!                    : 43
+%                    : 53
+(                    : 27 28 29 30 31 32 33 35 39 59
+)                    : 27 28 29 30 31 32 33 35 39 59
+*                    : 51
++                    : 48
+-                    : 49
+/                    : 52
+;                    : 40
+<                    : 46 47
+=                    : 15 16 17 18 20 21 22 23 25 26 42 42 43 45 46
+>                    : 44 45
+FORID                : 39
+ID                   : 
+IFID                 : 35
+INT                  : 6 7 7 17 20 22 22 23 23 30 32 32 55 57 58 58
+INTID                : 5 6 7
+READ                 : 27
+STRING               : 28
+VAR                  : 5 6 7 15 16 17 19 19 20 22 23 24 24 24 29 30 32 56 57 58
+WRITE                : 28 29 30 31 32 33
+[                    : 6 7 7 17 19 20 22 22 23 23 24 24 30 32 32 57 58 58
+]                    : 6 7 7 17 19 20 22 22 23 23 24 24 30 32 32 57 58 58
+error                : 
+{                    : 34 38
+}                    : 34 38
+
+Nonterminals, with rules where they appear
+
+Atrib                : 10 39
+AtribArray           : 18 21 31
+AtribMatrix          : 25 26 33
+Body                 : 34 37 38
+Command              : 8 9 36 37
+Cond                 : 35 41
+Expr                 : 15 17 18 22 25 48 49 59
+Factor               : 42 42 43 43 44 44 45 45 46 46 47 47 51 52 53 54
+For                  : 38
+ForCond              : 39
+ForStatement         : 14
+If                   : 34
+IfStatement          : 13
+Init                 : 3 4
+InitBlock            : 1 4
+InitLabel            : 39
+InstrBlock           : 2 9
+Prog                 : 0
+Read                 : 11 16 20 21 23 26
+Term                 : 48 49 50 51 52 53
+Write                : 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Prog
+    (1) Prog -> . InitBlock
+    (2) Prog -> . InstrBlock
+    (3) InitBlock -> . Init
+    (4) InitBlock -> . InitBlock Init
+    (8) InstrBlock -> . Command
+    (9) InstrBlock -> . InstrBlock Command
+    (5) Init -> . INTID VAR
+    (6) Init -> . INTID [ INT ] VAR
+    (7) Init -> . INTID [ INT ] [ INT ] VAR
+    (10) Command -> . Atrib
+    (11) Command -> . Read
+    (12) Command -> . Write
+    (13) Command -> . IfStatement
+    (14) Command -> . ForStatement
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (27) Read -> . READ ( )
+    (28) Write -> . WRITE ( STRING )
+    (29) Write -> . WRITE ( VAR )
+    (30) Write -> . WRITE ( VAR [ INT ] )
+    (31) Write -> . WRITE ( AtribArray )
+    (32) Write -> . WRITE ( VAR [ INT ] [ INT ] )
+    (33) Write -> . WRITE ( AtribMatrix )
+    (34) IfStatement -> . If { Body }
+    (38) ForStatement -> . For { Body }
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+    (35) If -> . IFID ( Cond )
+    (39) For -> . FORID ( Atrib InitLabel ForCond )
+
+    INTID           shift and go to state 6
+    VAR             shift and go to state 7
+    READ            shift and go to state 15
+    WRITE           shift and go to state 16
+    IFID            shift and go to state 19
+    FORID           shift and go to state 20
+
+    Prog                           shift and go to state 1
+    InitBlock                      shift and go to state 2
+    InstrBlock                     shift and go to state 3
+    Init                           shift and go to state 4
+    Command                        shift and go to state 5
+    Atrib                          shift and go to state 8
+    Read                           shift and go to state 9
+    Write                          shift and go to state 10
+    IfStatement                    shift and go to state 11
+    ForStatement                   shift and go to state 12
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+    If                             shift and go to state 17
+    For                            shift and go to state 18
+
+state 1
+
+    (0) S' -> Prog .
+
+
+
+state 2
+
+    (1) Prog -> InitBlock .
+    (4) InitBlock -> InitBlock . Init
+    (5) Init -> . INTID VAR
+    (6) Init -> . INTID [ INT ] VAR
+    (7) Init -> . INTID [ INT ] [ INT ] VAR
+
+    $end            reduce using rule 1 (Prog -> InitBlock .)
+    INTID           shift and go to state 6
+
+    Init                           shift and go to state 21
+
+state 3
+
+    (2) Prog -> InstrBlock .
+    (9) InstrBlock -> InstrBlock . Command
+    (10) Command -> . Atrib
+    (11) Command -> . Read
+    (12) Command -> . Write
+    (13) Command -> . IfStatement
+    (14) Command -> . ForStatement
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (27) Read -> . READ ( )
+    (28) Write -> . WRITE ( STRING )
+    (29) Write -> . WRITE ( VAR )
+    (30) Write -> . WRITE ( VAR [ INT ] )
+    (31) Write -> . WRITE ( AtribArray )
+    (32) Write -> . WRITE ( VAR [ INT ] [ INT ] )
+    (33) Write -> . WRITE ( AtribMatrix )
+    (34) IfStatement -> . If { Body }
+    (38) ForStatement -> . For { Body }
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+    (35) If -> . IFID ( Cond )
+    (39) For -> . FORID ( Atrib InitLabel ForCond )
+
+    $end            reduce using rule 2 (Prog -> InstrBlock .)
+    VAR             shift and go to state 7
+    READ            shift and go to state 15
+    WRITE           shift and go to state 16
+    IFID            shift and go to state 19
+    FORID           shift and go to state 20
+
+    Command                        shift and go to state 22
+    Atrib                          shift and go to state 8
+    Read                           shift and go to state 9
+    Write                          shift and go to state 10
+    IfStatement                    shift and go to state 11
+    ForStatement                   shift and go to state 12
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+    If                             shift and go to state 17
+    For                            shift and go to state 18
+
+state 4
+
+    (3) InitBlock -> Init .
+
+    INTID           reduce using rule 3 (InitBlock -> Init .)
+    $end            reduce using rule 3 (InitBlock -> Init .)
+
+
+state 5
+
+    (8) InstrBlock -> Command .
+
+    VAR             reduce using rule 8 (InstrBlock -> Command .)
+    READ            reduce using rule 8 (InstrBlock -> Command .)
+    WRITE           reduce using rule 8 (InstrBlock -> Command .)
+    IFID            reduce using rule 8 (InstrBlock -> Command .)
+    FORID           reduce using rule 8 (InstrBlock -> Command .)
+    $end            reduce using rule 8 (InstrBlock -> Command .)
+
+
+state 6
+
+    (5) Init -> INTID . VAR
+    (6) Init -> INTID . [ INT ] VAR
+    (7) Init -> INTID . [ INT ] [ INT ] VAR
+
+    VAR             shift and go to state 23
+    [               shift and go to state 24
+
+
+state 7
+
+    (15) Atrib -> VAR . = Expr
+    (16) Atrib -> VAR . = Read
+    (17) Atrib -> VAR . [ INT ] = Expr
+    (20) Atrib -> VAR . [ INT ] = Read
+    (22) Atrib -> VAR . [ INT ] [ INT ] = Expr
+    (23) Atrib -> VAR . [ INT ] [ INT ] = Read
+    (19) AtribArray -> VAR . [ VAR ]
+    (24) AtribMatrix -> VAR . [ VAR ] [ VAR ]
+
+    =               shift and go to state 25
+    [               shift and go to state 26
+
+
+state 8
+
+    (10) Command -> Atrib .
+
+    VAR             reduce using rule 10 (Command -> Atrib .)
+    READ            reduce using rule 10 (Command -> Atrib .)
+    WRITE           reduce using rule 10 (Command -> Atrib .)
+    IFID            reduce using rule 10 (Command -> Atrib .)
+    FORID           reduce using rule 10 (Command -> Atrib .)
+    $end            reduce using rule 10 (Command -> Atrib .)
+    }               reduce using rule 10 (Command -> Atrib .)
+
+
+state 9
+
+    (11) Command -> Read .
+
+    VAR             reduce using rule 11 (Command -> Read .)
+    READ            reduce using rule 11 (Command -> Read .)
+    WRITE           reduce using rule 11 (Command -> Read .)
+    IFID            reduce using rule 11 (Command -> Read .)
+    FORID           reduce using rule 11 (Command -> Read .)
+    $end            reduce using rule 11 (Command -> Read .)
+    }               reduce using rule 11 (Command -> Read .)
+
+
+state 10
+
+    (12) Command -> Write .
+
+    VAR             reduce using rule 12 (Command -> Write .)
+    READ            reduce using rule 12 (Command -> Write .)
+    WRITE           reduce using rule 12 (Command -> Write .)
+    IFID            reduce using rule 12 (Command -> Write .)
+    FORID           reduce using rule 12 (Command -> Write .)
+    $end            reduce using rule 12 (Command -> Write .)
+    }               reduce using rule 12 (Command -> Write .)
+
+
+state 11
+
+    (13) Command -> IfStatement .
+
+    VAR             reduce using rule 13 (Command -> IfStatement .)
+    READ            reduce using rule 13 (Command -> IfStatement .)
+    WRITE           reduce using rule 13 (Command -> IfStatement .)
+    IFID            reduce using rule 13 (Command -> IfStatement .)
+    FORID           reduce using rule 13 (Command -> IfStatement .)
+    $end            reduce using rule 13 (Command -> IfStatement .)
+    }               reduce using rule 13 (Command -> IfStatement .)
+
+
+state 12
+
+    (14) Command -> ForStatement .
+
+    VAR             reduce using rule 14 (Command -> ForStatement .)
+    READ            reduce using rule 14 (Command -> ForStatement .)
+    WRITE           reduce using rule 14 (Command -> ForStatement .)
+    IFID            reduce using rule 14 (Command -> ForStatement .)
+    FORID           reduce using rule 14 (Command -> ForStatement .)
+    $end            reduce using rule 14 (Command -> ForStatement .)
+    }               reduce using rule 14 (Command -> ForStatement .)
+
+
+state 13
+
+    (18) Atrib -> AtribArray . = Expr
+    (21) Atrib -> AtribArray . = Read
+
+    =               shift and go to state 27
+
+
+state 14
+
+    (25) Atrib -> AtribMatrix . = Expr
+    (26) Atrib -> AtribMatrix . = Read
+
+    =               shift and go to state 28
+
+
+state 15
+
+    (27) Read -> READ . ( )
+
+    (               shift and go to state 29
+
+
+state 16
+
+    (28) Write -> WRITE . ( STRING )
+    (29) Write -> WRITE . ( VAR )
+    (30) Write -> WRITE . ( VAR [ INT ] )
+    (31) Write -> WRITE . ( AtribArray )
+    (32) Write -> WRITE . ( VAR [ INT ] [ INT ] )
+    (33) Write -> WRITE . ( AtribMatrix )
+
+    (               shift and go to state 30
+
+
+state 17
+
+    (34) IfStatement -> If . { Body }
+
+    {               shift and go to state 31
+
+
+state 18
+
+    (38) ForStatement -> For . { Body }
+
+    {               shift and go to state 32
+
+
+state 19
+
+    (35) If -> IFID . ( Cond )
+
+    (               shift and go to state 33
+
+
+state 20
+
+    (39) For -> FORID . ( Atrib InitLabel ForCond )
+
+    (               shift and go to state 34
+
+
+state 21
+
+    (4) InitBlock -> InitBlock Init .
+
+    INTID           reduce using rule 4 (InitBlock -> InitBlock Init .)
+    $end            reduce using rule 4 (InitBlock -> InitBlock Init .)
+
+
+state 22
+
+    (9) InstrBlock -> InstrBlock Command .
+
+    VAR             reduce using rule 9 (InstrBlock -> InstrBlock Command .)
+    READ            reduce using rule 9 (InstrBlock -> InstrBlock Command .)
+    WRITE           reduce using rule 9 (InstrBlock -> InstrBlock Command .)
+    IFID            reduce using rule 9 (InstrBlock -> InstrBlock Command .)
+    FORID           reduce using rule 9 (InstrBlock -> InstrBlock Command .)
+    $end            reduce using rule 9 (InstrBlock -> InstrBlock Command .)
+
+
+state 23
+
+    (5) Init -> INTID VAR .
+
+    INTID           reduce using rule 5 (Init -> INTID VAR .)
+    $end            reduce using rule 5 (Init -> INTID VAR .)
+
+
+state 24
+
+    (6) Init -> INTID [ . INT ] VAR
+    (7) Init -> INTID [ . INT ] [ INT ] VAR
+
+    INT             shift and go to state 35
+
+
+state 25
+
+    (15) Atrib -> VAR = . Expr
+    (16) Atrib -> VAR = . Read
+    (48) Expr -> . Expr + Term
+    (49) Expr -> . Expr - Term
+    (50) Expr -> . Term
+    (27) Read -> . READ ( )
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    READ            shift and go to state 15
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Expr                           shift and go to state 37
+    Read                           shift and go to state 38
+    Term                           shift and go to state 39
+    Factor                         shift and go to state 41
+
+state 26
+
+    (17) Atrib -> VAR [ . INT ] = Expr
+    (20) Atrib -> VAR [ . INT ] = Read
+    (22) Atrib -> VAR [ . INT ] [ INT ] = Expr
+    (23) Atrib -> VAR [ . INT ] [ INT ] = Read
+    (19) AtribArray -> VAR [ . VAR ]
+    (24) AtribMatrix -> VAR [ . VAR ] [ VAR ]
+
+    INT             shift and go to state 44
+    VAR             shift and go to state 43
+
+
+state 27
+
+    (18) Atrib -> AtribArray = . Expr
+    (21) Atrib -> AtribArray = . Read
+    (48) Expr -> . Expr + Term
+    (49) Expr -> . Expr - Term
+    (50) Expr -> . Term
+    (27) Read -> . READ ( )
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    READ            shift and go to state 15
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Expr                           shift and go to state 45
+    Read                           shift and go to state 46
+    Term                           shift and go to state 39
+    Factor                         shift and go to state 41
+
+state 28
+
+    (25) Atrib -> AtribMatrix = . Expr
+    (26) Atrib -> AtribMatrix = . Read
+    (48) Expr -> . Expr + Term
+    (49) Expr -> . Expr - Term
+    (50) Expr -> . Term
+    (27) Read -> . READ ( )
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    READ            shift and go to state 15
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Expr                           shift and go to state 47
+    Read                           shift and go to state 48
+    Term                           shift and go to state 39
+    Factor                         shift and go to state 41
+
+state 29
+
+    (27) Read -> READ ( . )
+
+    )               shift and go to state 49
+
+
+state 30
+
+    (28) Write -> WRITE ( . STRING )
+    (29) Write -> WRITE ( . VAR )
+    (30) Write -> WRITE ( . VAR [ INT ] )
+    (31) Write -> WRITE ( . AtribArray )
+    (32) Write -> WRITE ( . VAR [ INT ] [ INT ] )
+    (33) Write -> WRITE ( . AtribMatrix )
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+
+    STRING          shift and go to state 50
+    VAR             shift and go to state 51
+
+    AtribArray                     shift and go to state 52
+    AtribMatrix                    shift and go to state 53
+
+state 31
+
+    (34) IfStatement -> If { . Body }
+    (36) Body -> . Command
+    (37) Body -> . Body Command
+    (10) Command -> . Atrib
+    (11) Command -> . Read
+    (12) Command -> . Write
+    (13) Command -> . IfStatement
+    (14) Command -> . ForStatement
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (27) Read -> . READ ( )
+    (28) Write -> . WRITE ( STRING )
+    (29) Write -> . WRITE ( VAR )
+    (30) Write -> . WRITE ( VAR [ INT ] )
+    (31) Write -> . WRITE ( AtribArray )
+    (32) Write -> . WRITE ( VAR [ INT ] [ INT ] )
+    (33) Write -> . WRITE ( AtribMatrix )
+    (34) IfStatement -> . If { Body }
+    (38) ForStatement -> . For { Body }
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+    (35) If -> . IFID ( Cond )
+    (39) For -> . FORID ( Atrib InitLabel ForCond )
+
+    VAR             shift and go to state 7
+    READ            shift and go to state 15
+    WRITE           shift and go to state 16
+    IFID            shift and go to state 19
+    FORID           shift and go to state 20
+
+    If                             shift and go to state 17
+    Body                           shift and go to state 54
+    Command                        shift and go to state 55
+    Atrib                          shift and go to state 8
+    Read                           shift and go to state 9
+    Write                          shift and go to state 10
+    IfStatement                    shift and go to state 11
+    ForStatement                   shift and go to state 12
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+    For                            shift and go to state 18
+
+state 32
+
+    (38) ForStatement -> For { . Body }
+    (36) Body -> . Command
+    (37) Body -> . Body Command
+    (10) Command -> . Atrib
+    (11) Command -> . Read
+    (12) Command -> . Write
+    (13) Command -> . IfStatement
+    (14) Command -> . ForStatement
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (27) Read -> . READ ( )
+    (28) Write -> . WRITE ( STRING )
+    (29) Write -> . WRITE ( VAR )
+    (30) Write -> . WRITE ( VAR [ INT ] )
+    (31) Write -> . WRITE ( AtribArray )
+    (32) Write -> . WRITE ( VAR [ INT ] [ INT ] )
+    (33) Write -> . WRITE ( AtribMatrix )
+    (34) IfStatement -> . If { Body }
+    (38) ForStatement -> . For { Body }
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+    (35) If -> . IFID ( Cond )
+    (39) For -> . FORID ( Atrib InitLabel ForCond )
+
+    VAR             shift and go to state 7
+    READ            shift and go to state 15
+    WRITE           shift and go to state 16
+    IFID            shift and go to state 19
+    FORID           shift and go to state 20
+
+    For                            shift and go to state 18
+    Body                           shift and go to state 56
+    Command                        shift and go to state 55
+    Atrib                          shift and go to state 8
+    Read                           shift and go to state 9
+    Write                          shift and go to state 10
+    IfStatement                    shift and go to state 11
+    ForStatement                   shift and go to state 12
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+    If                             shift and go to state 17
+
+state 33
+
+    (35) If -> IFID ( . Cond )
+    (42) Cond -> . Factor = = Factor
+    (43) Cond -> . Factor ! = Factor
+    (44) Cond -> . Factor > Factor
+    (45) Cond -> . Factor > = Factor
+    (46) Cond -> . Factor < = Factor
+    (47) Cond -> . Factor < Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Cond                           shift and go to state 57
+    Factor                         shift and go to state 58
+
+state 34
+
+    (39) For -> FORID ( . Atrib InitLabel ForCond )
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+
+    VAR             shift and go to state 7
+
+    Atrib                          shift and go to state 59
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+
+state 35
+
+    (6) Init -> INTID [ INT . ] VAR
+    (7) Init -> INTID [ INT . ] [ INT ] VAR
+
+    ]               shift and go to state 60
+
+
+state 36
+
+    (56) Factor -> VAR .
+    (57) Factor -> VAR . [ INT ]
+    (58) Factor -> VAR . [ INT ] [ INT ]
+
+    *               reduce using rule 56 (Factor -> VAR .)
+    /               reduce using rule 56 (Factor -> VAR .)
+    %               reduce using rule 56 (Factor -> VAR .)
+    +               reduce using rule 56 (Factor -> VAR .)
+    -               reduce using rule 56 (Factor -> VAR .)
+    VAR             reduce using rule 56 (Factor -> VAR .)
+    READ            reduce using rule 56 (Factor -> VAR .)
+    WRITE           reduce using rule 56 (Factor -> VAR .)
+    IFID            reduce using rule 56 (Factor -> VAR .)
+    FORID           reduce using rule 56 (Factor -> VAR .)
+    $end            reduce using rule 56 (Factor -> VAR .)
+    }               reduce using rule 56 (Factor -> VAR .)
+    ;               reduce using rule 56 (Factor -> VAR .)
+    =               reduce using rule 56 (Factor -> VAR .)
+    !               reduce using rule 56 (Factor -> VAR .)
+    >               reduce using rule 56 (Factor -> VAR .)
+    <               reduce using rule 56 (Factor -> VAR .)
+    )               reduce using rule 56 (Factor -> VAR .)
+    [               shift and go to state 61
+
+
+state 37
+
+    (15) Atrib -> VAR = Expr .
+    (48) Expr -> Expr . + Term
+    (49) Expr -> Expr . - Term
+
+    VAR             reduce using rule 15 (Atrib -> VAR = Expr .)
+    READ            reduce using rule 15 (Atrib -> VAR = Expr .)
+    WRITE           reduce using rule 15 (Atrib -> VAR = Expr .)
+    IFID            reduce using rule 15 (Atrib -> VAR = Expr .)
+    FORID           reduce using rule 15 (Atrib -> VAR = Expr .)
+    $end            reduce using rule 15 (Atrib -> VAR = Expr .)
+    }               reduce using rule 15 (Atrib -> VAR = Expr .)
+    ;               reduce using rule 15 (Atrib -> VAR = Expr .)
+    +               shift and go to state 62
+    -               shift and go to state 63
+
+
+state 38
+
+    (16) Atrib -> VAR = Read .
+
+    VAR             reduce using rule 16 (Atrib -> VAR = Read .)
+    READ            reduce using rule 16 (Atrib -> VAR = Read .)
+    WRITE           reduce using rule 16 (Atrib -> VAR = Read .)
+    IFID            reduce using rule 16 (Atrib -> VAR = Read .)
+    FORID           reduce using rule 16 (Atrib -> VAR = Read .)
+    $end            reduce using rule 16 (Atrib -> VAR = Read .)
+    }               reduce using rule 16 (Atrib -> VAR = Read .)
+    ;               reduce using rule 16 (Atrib -> VAR = Read .)
+
+
+state 39
+
+    (50) Expr -> Term .
+    (51) Term -> Term . * Factor
+    (52) Term -> Term . / Factor
+    (53) Term -> Term . % Factor
+
+    +               reduce using rule 50 (Expr -> Term .)
+    -               reduce using rule 50 (Expr -> Term .)
+    VAR             reduce using rule 50 (Expr -> Term .)
+    READ            reduce using rule 50 (Expr -> Term .)
+    WRITE           reduce using rule 50 (Expr -> Term .)
+    IFID            reduce using rule 50 (Expr -> Term .)
+    FORID           reduce using rule 50 (Expr -> Term .)
+    $end            reduce using rule 50 (Expr -> Term .)
+    }               reduce using rule 50 (Expr -> Term .)
+    ;               reduce using rule 50 (Expr -> Term .)
+    )               reduce using rule 50 (Expr -> Term .)
+    *               shift and go to state 64
+    /               shift and go to state 65
+    %               shift and go to state 66
+
+
+state 40
+
+    (59) Factor -> ( . Expr )
+    (48) Expr -> . Expr + Term
+    (49) Expr -> . Expr - Term
+    (50) Expr -> . Term
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Expr                           shift and go to state 67
+    Term                           shift and go to state 39
+    Factor                         shift and go to state 41
+
+state 41
+
+    (54) Term -> Factor .
+
+    *               reduce using rule 54 (Term -> Factor .)
+    /               reduce using rule 54 (Term -> Factor .)
+    %               reduce using rule 54 (Term -> Factor .)
+    +               reduce using rule 54 (Term -> Factor .)
+    -               reduce using rule 54 (Term -> Factor .)
+    VAR             reduce using rule 54 (Term -> Factor .)
+    READ            reduce using rule 54 (Term -> Factor .)
+    WRITE           reduce using rule 54 (Term -> Factor .)
+    IFID            reduce using rule 54 (Term -> Factor .)
+    FORID           reduce using rule 54 (Term -> Factor .)
+    $end            reduce using rule 54 (Term -> Factor .)
+    }               reduce using rule 54 (Term -> Factor .)
+    ;               reduce using rule 54 (Term -> Factor .)
+    )               reduce using rule 54 (Term -> Factor .)
+
+
+state 42
+
+    (55) Factor -> INT .
+
+    *               reduce using rule 55 (Factor -> INT .)
+    /               reduce using rule 55 (Factor -> INT .)
+    %               reduce using rule 55 (Factor -> INT .)
+    +               reduce using rule 55 (Factor -> INT .)
+    -               reduce using rule 55 (Factor -> INT .)
+    VAR             reduce using rule 55 (Factor -> INT .)
+    READ            reduce using rule 55 (Factor -> INT .)
+    WRITE           reduce using rule 55 (Factor -> INT .)
+    IFID            reduce using rule 55 (Factor -> INT .)
+    FORID           reduce using rule 55 (Factor -> INT .)
+    $end            reduce using rule 55 (Factor -> INT .)
+    }               reduce using rule 55 (Factor -> INT .)
+    ;               reduce using rule 55 (Factor -> INT .)
+    =               reduce using rule 55 (Factor -> INT .)
+    !               reduce using rule 55 (Factor -> INT .)
+    >               reduce using rule 55 (Factor -> INT .)
+    <               reduce using rule 55 (Factor -> INT .)
+    )               reduce using rule 55 (Factor -> INT .)
+
+
+state 43
+
+    (19) AtribArray -> VAR [ VAR . ]
+    (24) AtribMatrix -> VAR [ VAR . ] [ VAR ]
+
+    ]               shift and go to state 68
+
+
+state 44
+
+    (17) Atrib -> VAR [ INT . ] = Expr
+    (20) Atrib -> VAR [ INT . ] = Read
+    (22) Atrib -> VAR [ INT . ] [ INT ] = Expr
+    (23) Atrib -> VAR [ INT . ] [ INT ] = Read
+
+    ]               shift and go to state 69
+
+
+state 45
+
+    (18) Atrib -> AtribArray = Expr .
+    (48) Expr -> Expr . + Term
+    (49) Expr -> Expr . - Term
+
+    VAR             reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    READ            reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    WRITE           reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    IFID            reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    FORID           reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    $end            reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    }               reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    ;               reduce using rule 18 (Atrib -> AtribArray = Expr .)
+    +               shift and go to state 62
+    -               shift and go to state 63
+
+
+state 46
+
+    (21) Atrib -> AtribArray = Read .
+
+    VAR             reduce using rule 21 (Atrib -> AtribArray = Read .)
+    READ            reduce using rule 21 (Atrib -> AtribArray = Read .)
+    WRITE           reduce using rule 21 (Atrib -> AtribArray = Read .)
+    IFID            reduce using rule 21 (Atrib -> AtribArray = Read .)
+    FORID           reduce using rule 21 (Atrib -> AtribArray = Read .)
+    $end            reduce using rule 21 (Atrib -> AtribArray = Read .)
+    }               reduce using rule 21 (Atrib -> AtribArray = Read .)
+    ;               reduce using rule 21 (Atrib -> AtribArray = Read .)
+
+
+state 47
+
+    (25) Atrib -> AtribMatrix = Expr .
+    (48) Expr -> Expr . + Term
+    (49) Expr -> Expr . - Term
+
+    VAR             reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    READ            reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    WRITE           reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    IFID            reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    FORID           reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    $end            reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    }               reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    ;               reduce using rule 25 (Atrib -> AtribMatrix = Expr .)
+    +               shift and go to state 62
+    -               shift and go to state 63
+
+
+state 48
+
+    (26) Atrib -> AtribMatrix = Read .
+
+    VAR             reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    READ            reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    WRITE           reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    IFID            reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    FORID           reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    $end            reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    }               reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+    ;               reduce using rule 26 (Atrib -> AtribMatrix = Read .)
+
+
+state 49
+
+    (27) Read -> READ ( ) .
+
+    VAR             reduce using rule 27 (Read -> READ ( ) .)
+    READ            reduce using rule 27 (Read -> READ ( ) .)
+    WRITE           reduce using rule 27 (Read -> READ ( ) .)
+    IFID            reduce using rule 27 (Read -> READ ( ) .)
+    FORID           reduce using rule 27 (Read -> READ ( ) .)
+    $end            reduce using rule 27 (Read -> READ ( ) .)
+    }               reduce using rule 27 (Read -> READ ( ) .)
+    ;               reduce using rule 27 (Read -> READ ( ) .)
+
+
+state 50
+
+    (28) Write -> WRITE ( STRING . )
+
+    )               shift and go to state 70
+
+
+state 51
+
+    (29) Write -> WRITE ( VAR . )
+    (30) Write -> WRITE ( VAR . [ INT ] )
+    (32) Write -> WRITE ( VAR . [ INT ] [ INT ] )
+    (19) AtribArray -> VAR . [ VAR ]
+    (24) AtribMatrix -> VAR . [ VAR ] [ VAR ]
+
+    )               shift and go to state 71
+    [               shift and go to state 72
+
+
+state 52
+
+    (31) Write -> WRITE ( AtribArray . )
+
+    )               shift and go to state 73
+
+
+state 53
+
+    (33) Write -> WRITE ( AtribMatrix . )
+
+    )               shift and go to state 74
+
+
+state 54
+
+    (34) IfStatement -> If { Body . }
+    (37) Body -> Body . Command
+    (10) Command -> . Atrib
+    (11) Command -> . Read
+    (12) Command -> . Write
+    (13) Command -> . IfStatement
+    (14) Command -> . ForStatement
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (27) Read -> . READ ( )
+    (28) Write -> . WRITE ( STRING )
+    (29) Write -> . WRITE ( VAR )
+    (30) Write -> . WRITE ( VAR [ INT ] )
+    (31) Write -> . WRITE ( AtribArray )
+    (32) Write -> . WRITE ( VAR [ INT ] [ INT ] )
+    (33) Write -> . WRITE ( AtribMatrix )
+    (34) IfStatement -> . If { Body }
+    (38) ForStatement -> . For { Body }
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+    (35) If -> . IFID ( Cond )
+    (39) For -> . FORID ( Atrib InitLabel ForCond )
+
+    }               shift and go to state 75
+    VAR             shift and go to state 7
+    READ            shift and go to state 15
+    WRITE           shift and go to state 16
+    IFID            shift and go to state 19
+    FORID           shift and go to state 20
+
+    If                             shift and go to state 17
+    Command                        shift and go to state 76
+    Atrib                          shift and go to state 8
+    Read                           shift and go to state 9
+    Write                          shift and go to state 10
+    IfStatement                    shift and go to state 11
+    ForStatement                   shift and go to state 12
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+    For                            shift and go to state 18
+
+state 55
+
+    (36) Body -> Command .
+
+    }               reduce using rule 36 (Body -> Command .)
+    VAR             reduce using rule 36 (Body -> Command .)
+    READ            reduce using rule 36 (Body -> Command .)
+    WRITE           reduce using rule 36 (Body -> Command .)
+    IFID            reduce using rule 36 (Body -> Command .)
+    FORID           reduce using rule 36 (Body -> Command .)
+
+
+state 56
+
+    (38) ForStatement -> For { Body . }
+    (37) Body -> Body . Command
+    (10) Command -> . Atrib
+    (11) Command -> . Read
+    (12) Command -> . Write
+    (13) Command -> . IfStatement
+    (14) Command -> . ForStatement
+    (15) Atrib -> . VAR = Expr
+    (16) Atrib -> . VAR = Read
+    (17) Atrib -> . VAR [ INT ] = Expr
+    (18) Atrib -> . AtribArray = Expr
+    (20) Atrib -> . VAR [ INT ] = Read
+    (21) Atrib -> . AtribArray = Read
+    (22) Atrib -> . VAR [ INT ] [ INT ] = Expr
+    (23) Atrib -> . VAR [ INT ] [ INT ] = Read
+    (25) Atrib -> . AtribMatrix = Expr
+    (26) Atrib -> . AtribMatrix = Read
+    (27) Read -> . READ ( )
+    (28) Write -> . WRITE ( STRING )
+    (29) Write -> . WRITE ( VAR )
+    (30) Write -> . WRITE ( VAR [ INT ] )
+    (31) Write -> . WRITE ( AtribArray )
+    (32) Write -> . WRITE ( VAR [ INT ] [ INT ] )
+    (33) Write -> . WRITE ( AtribMatrix )
+    (34) IfStatement -> . If { Body }
+    (38) ForStatement -> . For { Body }
+    (19) AtribArray -> . VAR [ VAR ]
+    (24) AtribMatrix -> . VAR [ VAR ] [ VAR ]
+    (35) If -> . IFID ( Cond )
+    (39) For -> . FORID ( Atrib InitLabel ForCond )
+
+    }               shift and go to state 77
+    VAR             shift and go to state 7
+    READ            shift and go to state 15
+    WRITE           shift and go to state 16
+    IFID            shift and go to state 19
+    FORID           shift and go to state 20
+
+    For                            shift and go to state 18
+    Command                        shift and go to state 76
+    Atrib                          shift and go to state 8
+    Read                           shift and go to state 9
+    Write                          shift and go to state 10
+    IfStatement                    shift and go to state 11
+    ForStatement                   shift and go to state 12
+    AtribArray                     shift and go to state 13
+    AtribMatrix                    shift and go to state 14
+    If                             shift and go to state 17
+
+state 57
+
+    (35) If -> IFID ( Cond . )
+
+    )               shift and go to state 78
+
+
+state 58
+
+    (42) Cond -> Factor . = = Factor
+    (43) Cond -> Factor . ! = Factor
+    (44) Cond -> Factor . > Factor
+    (45) Cond -> Factor . > = Factor
+    (46) Cond -> Factor . < = Factor
+    (47) Cond -> Factor . < Factor
+
+    =               shift and go to state 79
+    !               shift and go to state 80
+    >               shift and go to state 81
+    <               shift and go to state 82
+
+
+state 59
+
+    (39) For -> FORID ( Atrib . InitLabel ForCond )
+    (40) InitLabel -> . ;
+
+    ;               shift and go to state 84
+
+    InitLabel                      shift and go to state 83
+
+state 60
+
+    (6) Init -> INTID [ INT ] . VAR
+    (7) Init -> INTID [ INT ] . [ INT ] VAR
+
+    VAR             shift and go to state 86
+    [               shift and go to state 85
+
+
+state 61
+
+    (57) Factor -> VAR [ . INT ]
+    (58) Factor -> VAR [ . INT ] [ INT ]
+
+    INT             shift and go to state 87
+
+
+state 62
+
+    (48) Expr -> Expr + . Term
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Term                           shift and go to state 88
+    Factor                         shift and go to state 41
+
+state 63
+
+    (49) Expr -> Expr - . Term
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Term                           shift and go to state 89
+    Factor                         shift and go to state 41
+
+state 64
+
+    (51) Term -> Term * . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 90
+
+state 65
+
+    (52) Term -> Term / . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 91
+
+state 66
+
+    (53) Term -> Term % . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 92
+
+state 67
+
+    (59) Factor -> ( Expr . )
+    (48) Expr -> Expr . + Term
+    (49) Expr -> Expr . - Term
+
+    )               shift and go to state 93
+    +               shift and go to state 62
+    -               shift and go to state 63
+
+
+state 68
+
+    (19) AtribArray -> VAR [ VAR ] .
+    (24) AtribMatrix -> VAR [ VAR ] . [ VAR ]
+
+    =               reduce using rule 19 (AtribArray -> VAR [ VAR ] .)
+    )               reduce using rule 19 (AtribArray -> VAR [ VAR ] .)
+    [               shift and go to state 94
+
+
+state 69
+
+    (17) Atrib -> VAR [ INT ] . = Expr
+    (20) Atrib -> VAR [ INT ] . = Read
+    (22) Atrib -> VAR [ INT ] . [ INT ] = Expr
+    (23) Atrib -> VAR [ INT ] . [ INT ] = Read
+
+    =               shift and go to state 96
+    [               shift and go to state 95
+
+
+state 70
+
+    (28) Write -> WRITE ( STRING ) .
+
+    VAR             reduce using rule 28 (Write -> WRITE ( STRING ) .)
+    READ            reduce using rule 28 (Write -> WRITE ( STRING ) .)
+    WRITE           reduce using rule 28 (Write -> WRITE ( STRING ) .)
+    IFID            reduce using rule 28 (Write -> WRITE ( STRING ) .)
+    FORID           reduce using rule 28 (Write -> WRITE ( STRING ) .)
+    $end            reduce using rule 28 (Write -> WRITE ( STRING ) .)
+    }               reduce using rule 28 (Write -> WRITE ( STRING ) .)
+
+
+state 71
+
+    (29) Write -> WRITE ( VAR ) .
+
+    VAR             reduce using rule 29 (Write -> WRITE ( VAR ) .)
+    READ            reduce using rule 29 (Write -> WRITE ( VAR ) .)
+    WRITE           reduce using rule 29 (Write -> WRITE ( VAR ) .)
+    IFID            reduce using rule 29 (Write -> WRITE ( VAR ) .)
+    FORID           reduce using rule 29 (Write -> WRITE ( VAR ) .)
+    $end            reduce using rule 29 (Write -> WRITE ( VAR ) .)
+    }               reduce using rule 29 (Write -> WRITE ( VAR ) .)
+
+
+state 72
+
+    (30) Write -> WRITE ( VAR [ . INT ] )
+    (32) Write -> WRITE ( VAR [ . INT ] [ INT ] )
+    (19) AtribArray -> VAR [ . VAR ]
+    (24) AtribMatrix -> VAR [ . VAR ] [ VAR ]
+
+    INT             shift and go to state 97
+    VAR             shift and go to state 43
+
+
+state 73
+
+    (31) Write -> WRITE ( AtribArray ) .
+
+    VAR             reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+    READ            reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+    WRITE           reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+    IFID            reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+    FORID           reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+    $end            reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+    }               reduce using rule 31 (Write -> WRITE ( AtribArray ) .)
+
+
+state 74
+
+    (33) Write -> WRITE ( AtribMatrix ) .
+
+    VAR             reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+    READ            reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+    WRITE           reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+    IFID            reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+    FORID           reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+    $end            reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+    }               reduce using rule 33 (Write -> WRITE ( AtribMatrix ) .)
+
+
+state 75
+
+    (34) IfStatement -> If { Body } .
+
+    VAR             reduce using rule 34 (IfStatement -> If { Body } .)
+    READ            reduce using rule 34 (IfStatement -> If { Body } .)
+    WRITE           reduce using rule 34 (IfStatement -> If { Body } .)
+    IFID            reduce using rule 34 (IfStatement -> If { Body } .)
+    FORID           reduce using rule 34 (IfStatement -> If { Body } .)
+    $end            reduce using rule 34 (IfStatement -> If { Body } .)
+    }               reduce using rule 34 (IfStatement -> If { Body } .)
+
+
+state 76
+
+    (37) Body -> Body Command .
+
+    }               reduce using rule 37 (Body -> Body Command .)
+    VAR             reduce using rule 37 (Body -> Body Command .)
+    READ            reduce using rule 37 (Body -> Body Command .)
+    WRITE           reduce using rule 37 (Body -> Body Command .)
+    IFID            reduce using rule 37 (Body -> Body Command .)
+    FORID           reduce using rule 37 (Body -> Body Command .)
+
+
+state 77
+
+    (38) ForStatement -> For { Body } .
+
+    VAR             reduce using rule 38 (ForStatement -> For { Body } .)
+    READ            reduce using rule 38 (ForStatement -> For { Body } .)
+    WRITE           reduce using rule 38 (ForStatement -> For { Body } .)
+    IFID            reduce using rule 38 (ForStatement -> For { Body } .)
+    FORID           reduce using rule 38 (ForStatement -> For { Body } .)
+    $end            reduce using rule 38 (ForStatement -> For { Body } .)
+    }               reduce using rule 38 (ForStatement -> For { Body } .)
+
+
+state 78
+
+    (35) If -> IFID ( Cond ) .
+
+    {               reduce using rule 35 (If -> IFID ( Cond ) .)
+
+
+state 79
+
+    (42) Cond -> Factor = . = Factor
+
+    =               shift and go to state 98
+
+
+state 80
+
+    (43) Cond -> Factor ! . = Factor
+
+    =               shift and go to state 99
+
+
+state 81
+
+    (44) Cond -> Factor > . Factor
+    (45) Cond -> Factor > . = Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    =               shift and go to state 101
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 100
+
+state 82
+
+    (46) Cond -> Factor < . = Factor
+    (47) Cond -> Factor < . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    =               shift and go to state 103
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 102
+
+state 83
+
+    (39) For -> FORID ( Atrib InitLabel . ForCond )
+    (41) ForCond -> . Cond
+    (42) Cond -> . Factor = = Factor
+    (43) Cond -> . Factor ! = Factor
+    (44) Cond -> . Factor > Factor
+    (45) Cond -> . Factor > = Factor
+    (46) Cond -> . Factor < = Factor
+    (47) Cond -> . Factor < Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    ForCond                        shift and go to state 104
+    Cond                           shift and go to state 105
+    Factor                         shift and go to state 58
+
+state 84
+
+    (40) InitLabel -> ; .
+
+    INT             reduce using rule 40 (InitLabel -> ; .)
+    VAR             reduce using rule 40 (InitLabel -> ; .)
+    (               reduce using rule 40 (InitLabel -> ; .)
+
+
+state 85
+
+    (7) Init -> INTID [ INT ] [ . INT ] VAR
+
+    INT             shift and go to state 106
+
+
+state 86
+
+    (6) Init -> INTID [ INT ] VAR .
+
+    INTID           reduce using rule 6 (Init -> INTID [ INT ] VAR .)
+    $end            reduce using rule 6 (Init -> INTID [ INT ] VAR .)
+
+
+state 87
+
+    (57) Factor -> VAR [ INT . ]
+    (58) Factor -> VAR [ INT . ] [ INT ]
+
+    ]               shift and go to state 107
+
+
+state 88
+
+    (48) Expr -> Expr + Term .
+    (51) Term -> Term . * Factor
+    (52) Term -> Term . / Factor
+    (53) Term -> Term . % Factor
+
+    +               reduce using rule 48 (Expr -> Expr + Term .)
+    -               reduce using rule 48 (Expr -> Expr + Term .)
+    VAR             reduce using rule 48 (Expr -> Expr + Term .)
+    READ            reduce using rule 48 (Expr -> Expr + Term .)
+    WRITE           reduce using rule 48 (Expr -> Expr + Term .)
+    IFID            reduce using rule 48 (Expr -> Expr + Term .)
+    FORID           reduce using rule 48 (Expr -> Expr + Term .)
+    $end            reduce using rule 48 (Expr -> Expr + Term .)
+    }               reduce using rule 48 (Expr -> Expr + Term .)
+    ;               reduce using rule 48 (Expr -> Expr + Term .)
+    )               reduce using rule 48 (Expr -> Expr + Term .)
+    *               shift and go to state 64
+    /               shift and go to state 65
+    %               shift and go to state 66
+
+
+state 89
+
+    (49) Expr -> Expr - Term .
+    (51) Term -> Term . * Factor
+    (52) Term -> Term . / Factor
+    (53) Term -> Term . % Factor
+
+    +               reduce using rule 49 (Expr -> Expr - Term .)
+    -               reduce using rule 49 (Expr -> Expr - Term .)
+    VAR             reduce using rule 49 (Expr -> Expr - Term .)
+    READ            reduce using rule 49 (Expr -> Expr - Term .)
+    WRITE           reduce using rule 49 (Expr -> Expr - Term .)
+    IFID            reduce using rule 49 (Expr -> Expr - Term .)
+    FORID           reduce using rule 49 (Expr -> Expr - Term .)
+    $end            reduce using rule 49 (Expr -> Expr - Term .)
+    }               reduce using rule 49 (Expr -> Expr - Term .)
+    ;               reduce using rule 49 (Expr -> Expr - Term .)
+    )               reduce using rule 49 (Expr -> Expr - Term .)
+    *               shift and go to state 64
+    /               shift and go to state 65
+    %               shift and go to state 66
+
+
+state 90
+
+    (51) Term -> Term * Factor .
+
+    *               reduce using rule 51 (Term -> Term * Factor .)
+    /               reduce using rule 51 (Term -> Term * Factor .)
+    %               reduce using rule 51 (Term -> Term * Factor .)
+    +               reduce using rule 51 (Term -> Term * Factor .)
+    -               reduce using rule 51 (Term -> Term * Factor .)
+    VAR             reduce using rule 51 (Term -> Term * Factor .)
+    READ            reduce using rule 51 (Term -> Term * Factor .)
+    WRITE           reduce using rule 51 (Term -> Term * Factor .)
+    IFID            reduce using rule 51 (Term -> Term * Factor .)
+    FORID           reduce using rule 51 (Term -> Term * Factor .)
+    $end            reduce using rule 51 (Term -> Term * Factor .)
+    }               reduce using rule 51 (Term -> Term * Factor .)
+    ;               reduce using rule 51 (Term -> Term * Factor .)
+    )               reduce using rule 51 (Term -> Term * Factor .)
+
+
+state 91
+
+    (52) Term -> Term / Factor .
+
+    *               reduce using rule 52 (Term -> Term / Factor .)
+    /               reduce using rule 52 (Term -> Term / Factor .)
+    %               reduce using rule 52 (Term -> Term / Factor .)
+    +               reduce using rule 52 (Term -> Term / Factor .)
+    -               reduce using rule 52 (Term -> Term / Factor .)
+    VAR             reduce using rule 52 (Term -> Term / Factor .)
+    READ            reduce using rule 52 (Term -> Term / Factor .)
+    WRITE           reduce using rule 52 (Term -> Term / Factor .)
+    IFID            reduce using rule 52 (Term -> Term / Factor .)
+    FORID           reduce using rule 52 (Term -> Term / Factor .)
+    $end            reduce using rule 52 (Term -> Term / Factor .)
+    }               reduce using rule 52 (Term -> Term / Factor .)
+    ;               reduce using rule 52 (Term -> Term / Factor .)
+    )               reduce using rule 52 (Term -> Term / Factor .)
+
+
+state 92
+
+    (53) Term -> Term % Factor .
+
+    *               reduce using rule 53 (Term -> Term % Factor .)
+    /               reduce using rule 53 (Term -> Term % Factor .)
+    %               reduce using rule 53 (Term -> Term % Factor .)
+    +               reduce using rule 53 (Term -> Term % Factor .)
+    -               reduce using rule 53 (Term -> Term % Factor .)
+    VAR             reduce using rule 53 (Term -> Term % Factor .)
+    READ            reduce using rule 53 (Term -> Term % Factor .)
+    WRITE           reduce using rule 53 (Term -> Term % Factor .)
+    IFID            reduce using rule 53 (Term -> Term % Factor .)
+    FORID           reduce using rule 53 (Term -> Term % Factor .)
+    $end            reduce using rule 53 (Term -> Term % Factor .)
+    }               reduce using rule 53 (Term -> Term % Factor .)
+    ;               reduce using rule 53 (Term -> Term % Factor .)
+    )               reduce using rule 53 (Term -> Term % Factor .)
+
+
+state 93
+
+    (59) Factor -> ( Expr ) .
+
+    *               reduce using rule 59 (Factor -> ( Expr ) .)
+    /               reduce using rule 59 (Factor -> ( Expr ) .)
+    %               reduce using rule 59 (Factor -> ( Expr ) .)
+    +               reduce using rule 59 (Factor -> ( Expr ) .)
+    -               reduce using rule 59 (Factor -> ( Expr ) .)
+    VAR             reduce using rule 59 (Factor -> ( Expr ) .)
+    READ            reduce using rule 59 (Factor -> ( Expr ) .)
+    WRITE           reduce using rule 59 (Factor -> ( Expr ) .)
+    IFID            reduce using rule 59 (Factor -> ( Expr ) .)
+    FORID           reduce using rule 59 (Factor -> ( Expr ) .)
+    $end            reduce using rule 59 (Factor -> ( Expr ) .)
+    }               reduce using rule 59 (Factor -> ( Expr ) .)
+    ;               reduce using rule 59 (Factor -> ( Expr ) .)
+    =               reduce using rule 59 (Factor -> ( Expr ) .)
+    !               reduce using rule 59 (Factor -> ( Expr ) .)
+    >               reduce using rule 59 (Factor -> ( Expr ) .)
+    <               reduce using rule 59 (Factor -> ( Expr ) .)
+    )               reduce using rule 59 (Factor -> ( Expr ) .)
+
+
+state 94
+
+    (24) AtribMatrix -> VAR [ VAR ] [ . VAR ]
+
+    VAR             shift and go to state 108
+
+
+state 95
+
+    (22) Atrib -> VAR [ INT ] [ . INT ] = Expr
+    (23) Atrib -> VAR [ INT ] [ . INT ] = Read
+
+    INT             shift and go to state 109
+
+
+state 96
+
+    (17) Atrib -> VAR [ INT ] = . Expr
+    (20) Atrib -> VAR [ INT ] = . Read
+    (48) Expr -> . Expr + Term
+    (49) Expr -> . Expr - Term
+    (50) Expr -> . Term
+    (27) Read -> . READ ( )
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    READ            shift and go to state 15
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Expr                           shift and go to state 110
+    Read                           shift and go to state 111
+    Term                           shift and go to state 39
+    Factor                         shift and go to state 41
+
+state 97
+
+    (30) Write -> WRITE ( VAR [ INT . ] )
+    (32) Write -> WRITE ( VAR [ INT . ] [ INT ] )
+
+    ]               shift and go to state 112
+
+
+state 98
+
+    (42) Cond -> Factor = = . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 113
+
+state 99
+
+    (43) Cond -> Factor ! = . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 114
+
+state 100
+
+    (44) Cond -> Factor > Factor .
+
+    )               reduce using rule 44 (Cond -> Factor > Factor .)
+
+
+state 101
+
+    (45) Cond -> Factor > = . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 115
+
+state 102
+
+    (47) Cond -> Factor < Factor .
+
+    )               reduce using rule 47 (Cond -> Factor < Factor .)
+
+
+state 103
+
+    (46) Cond -> Factor < = . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Factor                         shift and go to state 116
+
+state 104
+
+    (39) For -> FORID ( Atrib InitLabel ForCond . )
+
+    )               shift and go to state 117
+
+
+state 105
+
+    (41) ForCond -> Cond .
+
+    )               reduce using rule 41 (ForCond -> Cond .)
+
+
+state 106
+
+    (7) Init -> INTID [ INT ] [ INT . ] VAR
+
+    ]               shift and go to state 118
+
+
+state 107
+
+    (57) Factor -> VAR [ INT ] .
+    (58) Factor -> VAR [ INT ] . [ INT ]
+
+    *               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    /               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    %               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    +               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    -               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    VAR             reduce using rule 57 (Factor -> VAR [ INT ] .)
+    READ            reduce using rule 57 (Factor -> VAR [ INT ] .)
+    WRITE           reduce using rule 57 (Factor -> VAR [ INT ] .)
+    IFID            reduce using rule 57 (Factor -> VAR [ INT ] .)
+    FORID           reduce using rule 57 (Factor -> VAR [ INT ] .)
+    $end            reduce using rule 57 (Factor -> VAR [ INT ] .)
+    }               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    ;               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    =               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    !               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    >               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    <               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    )               reduce using rule 57 (Factor -> VAR [ INT ] .)
+    [               shift and go to state 119
+
+
+state 108
+
+    (24) AtribMatrix -> VAR [ VAR ] [ VAR . ]
+
+    ]               shift and go to state 120
+
+
+state 109
+
+    (22) Atrib -> VAR [ INT ] [ INT . ] = Expr
+    (23) Atrib -> VAR [ INT ] [ INT . ] = Read
+
+    ]               shift and go to state 121
+
+
+state 110
+
+    (17) Atrib -> VAR [ INT ] = Expr .
+    (48) Expr -> Expr . + Term
+    (49) Expr -> Expr . - Term
+
+    VAR             reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    READ            reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    WRITE           reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    IFID            reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    FORID           reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    $end            reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    }               reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    ;               reduce using rule 17 (Atrib -> VAR [ INT ] = Expr .)
+    +               shift and go to state 62
+    -               shift and go to state 63
+
+
+state 111
+
+    (20) Atrib -> VAR [ INT ] = Read .
+
+    VAR             reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    READ            reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    WRITE           reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    IFID            reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    FORID           reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    $end            reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    }               reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+    ;               reduce using rule 20 (Atrib -> VAR [ INT ] = Read .)
+
+
+state 112
+
+    (30) Write -> WRITE ( VAR [ INT ] . )
+    (32) Write -> WRITE ( VAR [ INT ] . [ INT ] )
+
+    )               shift and go to state 123
+    [               shift and go to state 122
+
+
+state 113
+
+    (42) Cond -> Factor = = Factor .
+
+    )               reduce using rule 42 (Cond -> Factor = = Factor .)
+
+
+state 114
+
+    (43) Cond -> Factor ! = Factor .
+
+    )               reduce using rule 43 (Cond -> Factor ! = Factor .)
+
+
+state 115
+
+    (45) Cond -> Factor > = Factor .
+
+    )               reduce using rule 45 (Cond -> Factor > = Factor .)
+
+
+state 116
+
+    (46) Cond -> Factor < = Factor .
+
+    )               reduce using rule 46 (Cond -> Factor < = Factor .)
+
+
+state 117
+
+    (39) For -> FORID ( Atrib InitLabel ForCond ) .
+
+    {               reduce using rule 39 (For -> FORID ( Atrib InitLabel ForCond ) .)
+
+
+state 118
+
+    (7) Init -> INTID [ INT ] [ INT ] . VAR
+
+    VAR             shift and go to state 124
+
+
+state 119
+
+    (58) Factor -> VAR [ INT ] [ . INT ]
+
+    INT             shift and go to state 125
+
+
+state 120
+
+    (24) AtribMatrix -> VAR [ VAR ] [ VAR ] .
+
+    =               reduce using rule 24 (AtribMatrix -> VAR [ VAR ] [ VAR ] .)
+    )               reduce using rule 24 (AtribMatrix -> VAR [ VAR ] [ VAR ] .)
+
+
+state 121
+
+    (22) Atrib -> VAR [ INT ] [ INT ] . = Expr
+    (23) Atrib -> VAR [ INT ] [ INT ] . = Read
+
+    =               shift and go to state 126
+
+
+state 122
+
+    (32) Write -> WRITE ( VAR [ INT ] [ . INT ] )
+
+    INT             shift and go to state 127
+
+
+state 123
+
+    (30) Write -> WRITE ( VAR [ INT ] ) .
+
+    VAR             reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+    READ            reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+    WRITE           reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+    IFID            reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+    FORID           reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+    $end            reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+    }               reduce using rule 30 (Write -> WRITE ( VAR [ INT ] ) .)
+
+
+state 124
+
+    (7) Init -> INTID [ INT ] [ INT ] VAR .
+
+    INTID           reduce using rule 7 (Init -> INTID [ INT ] [ INT ] VAR .)
+    $end            reduce using rule 7 (Init -> INTID [ INT ] [ INT ] VAR .)
+
+
+state 125
+
+    (58) Factor -> VAR [ INT ] [ INT . ]
+
+    ]               shift and go to state 128
+
+
+state 126
+
+    (22) Atrib -> VAR [ INT ] [ INT ] = . Expr
+    (23) Atrib -> VAR [ INT ] [ INT ] = . Read
+    (48) Expr -> . Expr + Term
+    (49) Expr -> . Expr - Term
+    (50) Expr -> . Term
+    (27) Read -> . READ ( )
+    (51) Term -> . Term * Factor
+    (52) Term -> . Term / Factor
+    (53) Term -> . Term % Factor
+    (54) Term -> . Factor
+    (55) Factor -> . INT
+    (56) Factor -> . VAR
+    (57) Factor -> . VAR [ INT ]
+    (58) Factor -> . VAR [ INT ] [ INT ]
+    (59) Factor -> . ( Expr )
+
+    READ            shift and go to state 15
+    INT             shift and go to state 42
+    VAR             shift and go to state 36
+    (               shift and go to state 40
+
+    Expr                           shift and go to state 129
+    Read                           shift and go to state 130
+    Term                           shift and go to state 39
+    Factor                         shift and go to state 41
+
+state 127
+
+    (32) Write -> WRITE ( VAR [ INT ] [ INT . ] )
+
+    ]               shift and go to state 131
+
+
+state 128
+
+    (58) Factor -> VAR [ INT ] [ INT ] .
+
+    *               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    /               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    %               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    +               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    -               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    VAR             reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    READ            reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    WRITE           reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    IFID            reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    FORID           reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    $end            reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    }               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    ;               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    =               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    !               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    >               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    <               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+    )               reduce using rule 58 (Factor -> VAR [ INT ] [ INT ] .)
+
+
+state 129
+
+    (22) Atrib -> VAR [ INT ] [ INT ] = Expr .
+    (48) Expr -> Expr . + Term
+    (49) Expr -> Expr . - Term
+
+    VAR             reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    READ            reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    WRITE           reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    IFID            reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    FORID           reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    $end            reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    }               reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    ;               reduce using rule 22 (Atrib -> VAR [ INT ] [ INT ] = Expr .)
+    +               shift and go to state 62
+    -               shift and go to state 63
+
+
+state 130
+
+    (23) Atrib -> VAR [ INT ] [ INT ] = Read .
+
+    VAR             reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    READ            reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    WRITE           reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    IFID            reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    FORID           reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    $end            reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    }               reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+    ;               reduce using rule 23 (Atrib -> VAR [ INT ] [ INT ] = Read .)
+
+
+state 131
+
+    (32) Write -> WRITE ( VAR [ INT ] [ INT ] . )
+
+    )               shift and go to state 132
+
+
+state 132
+
+    (32) Write -> WRITE ( VAR [ INT ] [ INT ] ) .
+
+    VAR             reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+    READ            reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+    WRITE           reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+    IFID            reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+    FORID           reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+    $end            reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+    }               reduce using rule 32 (Write -> WRITE ( VAR [ INT ] [ INT ] ) .)
+

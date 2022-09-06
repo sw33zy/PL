@@ -1,0 +1,82 @@
+
+Prog -> InitBlock 
+Prog -> InstrBlock
+
+InitBlock -> Init
+            | InitBlock Init
+
+Init -> INTID VAR
+      | INTID '[' INT ']' VAR 
+      | INTID '[' INT ']' '[' INT ']' VAR 
+
+InstrBlock -> Command
+            | InstrBlock Command
+
+Command -> Atrib
+         | Read
+         | Write
+         | IfStatement
+         | ForStatement
+
+Atrib -> VAR '=' Expr
+       | VAR '=' Read
+       | VAR '[' INT ']' '=' Expr
+       | AtribArray '=' Expr
+       | VAR '[' INT ']' '=' Read
+       | AtribArray '=' Read
+       | VAR '[' INT ']' '[' INT ']' '=' Expr
+       | VAR '[' INT ']' '[' INT ']' '=' Read
+       | AtribMatrix '=' Expr
+       | AtribMatrix '=' Read
+
+AtribArray -> VAR '[' VAR ']'
+
+AtribMatrix-> VAR '[' VAR ']' '[' VAR ']'
+
+Read -> READ '(' ')'
+
+Write -> WRITE '(' STRING ')'
+       | WRITE '(' VAR ')'
+       | WRITE '(' VAR '[' INT ']' ')'
+       | WRITE '(' AtribArray ')'
+       | WRITE '(' VAR '[' INT ']' '[' INT ']' ')'
+       | WRITE '(' AtribMatrix ')'
+
+IfStatement -> If '{' Body '}'
+
+If -> IFID '(' Cond ')'
+
+Body -> Command
+      | Body Command
+
+ForStatement -> For '{' Body '}'
+
+For -> FORID '(' Atrib InitLabel ForCond ')'
+
+InitLabel -> ';'
+
+ForCond -> Cond
+
+Cond -> Factor '=' '=' Factor 
+      | Factor '!' '=' Factor
+      | Factor '<' '=' Factor
+      | Factor '>' '=' Factor
+      | Factor '>' Factor 
+      | Factor '<' Factor 
+
+
+Expr -> Expr '+' Termo
+      | Expr '-' Termo
+      | Termo
+
+Termo -> Termo '*' Factor
+        | Termo '/' Factor
+        | Termo '%' Factor
+        | Factor
+
+Factor -> '(' Expr ')' 
+       | INT
+       | VAR
+       | VAR '[' INT ']'
+       | VAR '[' INT ']' '[' INT ']'
+

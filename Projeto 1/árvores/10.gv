@@ -1,0 +1,8 @@
+// Árvore genealógica
+digraph {
+	1 [label="Jose Luciano Martins Fernandes"]
+	2 [label="Joao Manuel Fernandes"]
+	3 [label="Maria Julia"]
+	2 -> 1
+	3 -> 1
+}

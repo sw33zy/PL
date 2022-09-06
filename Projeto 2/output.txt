@@ -1,0 +1,2 @@
+err "'int' object is not subscriptable"
+err "variable 'y' does not exist"

@@ -1,0 +1,6 @@
+int a 
+int b
+int [3][2] v
+int i 
+int j
+y[1][1] = a[1] + 1

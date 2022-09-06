@@ -1,0 +1,33 @@
+int [3][2] v
+int i 
+int j
+print("Insira os numeros de uma matriz 3x2:\n")
+for(i=0; i < 3){
+    for(j=0; j < 2) {
+        v[i][j] = scan()
+        j = j + 1
+    }
+    i = i + 1
+}
+print("A matriz original e:\n")
+for(i=0; i < 3){
+    print("[")
+    for(j=0; j < 2) {
+        print(v[i][j])
+        print(" ")
+        j = j + 1
+    }
+    print("]\n")
+    i = i + 1
+}
+print("\nA matriz transposta e:\n")
+for(j=0; j < 2){
+    print("[")
+    for(i=0; i < 3) {
+        print(v[i][j])
+        print(" ")
+        i = i + 1
+    }
+    print("]\n")
+    j = j + 1
+}

@@ -1,0 +1,8 @@
+// Árvore genealógica
+digraph {
+	1 [label="Severino Augusto Cardoso Macedo"]
+	2 [label="Joao Cardoso Macedo"]
+	3 [label="Maria Rosa Leite Pereira"]
+	2 -> 1
+	3 -> 1
+}

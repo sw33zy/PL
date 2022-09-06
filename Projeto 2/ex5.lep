@@ -1,0 +1,13 @@
+int i
+int [5] n
+for(i=0; i < 5){
+    print("Insira um numero!\n")
+    n[i] = scan()
+    i = i + 1
+}
+print("Array por ordem inversa: ")
+for(i = 4; i >= 0){
+    print(" ")
+    print(n[i])
+    i = i - 1
+}

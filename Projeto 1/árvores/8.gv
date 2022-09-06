@@ -1,0 +1,8 @@
+// Árvore genealógica
+digraph {
+	1 [label="Jose Antonio Gomes Alves Carneiro"]
+	2 [label="Antonio Gomes Ferreiro"]
+	3 [label="Ana Alves"]
+	2 -> 1
+	3 -> 1
+}

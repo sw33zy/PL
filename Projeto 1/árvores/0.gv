@@ -1,0 +1,8 @@
+// Árvore genealógica
+digraph {
+	1 [label="Albano Vieira Mendes Castro"]
+	2 [label="Joao Vieira Mendes"]
+	3 [label="Antonia Maria Ferreira Leite"]
+	2 -> 1
+	3 -> 1
+}
